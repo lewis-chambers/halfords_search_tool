@@ -163,5 +163,4 @@ if __name__ == '__main__':
 	product_webpage = "https://www.halfords.com/{pid}.html".format(pid=pid)
 
 	stock = query_stock(pid, post_code)
-	pprint.pprint(stock)
 	#loop_until_available(pid, post_code)
