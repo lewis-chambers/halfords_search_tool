@@ -23,7 +23,14 @@ stock = halfords_search.query_stock(barcode, address)
 halfords_search.print_stock(stock)
 
 # Email yourself when an item is available nearby
-halfords_search.loop_until_available(barcode, address)
+halfords_search.wait_until_available(barcode, address)
+
+# Email yourself when item is available (non blocking)
+halfords_search.wait_until_available(barcode, address, background_search=True)
 ```
 ## Roadmap
-It would be useful for the package to wait in the background until stock is available while the program is open or perhaps even after it closes. The former can be done via the multi-threading or multi-processing packages, but the latter is more difficult to accomplish in a OS independent manner.
+It would be convenient for the background search to open in a hidden console so that it can continue to search after main window has closed.
+
+## Expected Issues
+
+For sending an email when stock is available. I used a .env file to protect my login details, you should replace the USER and PASS credentials with your preferred method of authentication.
