@@ -6,7 +6,7 @@ Using the tool, you can return a table of available stock for any barcode and ad
 
 ## Installation
 
-Install locally.
+I haven't uploaded to PyPI, but it can be easily installed locally.
 
 ```bash
 pip install -e C:\\directory_package_is_in\halfords_search
