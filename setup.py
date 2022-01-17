@@ -20,7 +20,7 @@ setuptools.setup(
 
     description="Halfords Search Tool",
 
-    url="<https://github.com/authorname/templatepackage>",
+    url="https://github.com/lewis-chambers/halfords_search_tool",
 
     install_requires=requirements,
     

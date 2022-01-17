@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 import time
 import os
 import re
+import threading
 
 # Loading secure credentials, should be replaced with preferred method of retreiving email address & password
 load_dotenv()
@@ -156,6 +157,14 @@ def loop_until_available(barcode, address, refresh_time=60 * 5):
 			time.sleep(refresh_time)
 
 
+def wait_until_available(barcode, address, background_search=False, refresh_time=60*5):
+	if background_search:
+		thread = threading.Thread(target=loop_until_available, args=(barcode, address, refresh_time))
+		thread.start()
+	else:
+		loop_until_available(barcode, address, refresh_time)
+
+
 if __name__ == '__main__':
 	pid = '134078'
 	bad_pid = '1'
@@ -163,4 +172,4 @@ if __name__ == '__main__':
 	product_webpage = "https://www.halfords.com/{pid}.html".format(pid=pid)
 
 	stock = query_stock(pid, post_code)
-	#loop_until_available(pid, post_code)
+	wait_until_available(pid, post_code, True)
